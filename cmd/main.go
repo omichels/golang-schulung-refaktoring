@@ -1,35 +1,32 @@
 package main
 
-import "fmt"
-
-type Employee struct {
-	id           int
-	hourlyPay    int
-	clockedHours int
-}
+import (
+	"fmt"
+	"github.com/omichels/golang-schulung-refaktoring/pkg/salary"
+)
 
 func main() {
-	employees := []Employee{
+	employees := []salary.Employee{
 		{
-			id:           1,
-			hourlyPay:    20,
-			clockedHours: 40,
+			Id:           1,
+			HourlyPay:    1,
+			ClockedHours: 40,
+			Bonus:        10,
 		},
 		{
-			id:           2,
-			hourlyPay:    23,
-			clockedHours: 37,
+			Id:           2,
+			HourlyPay:    1,
+			ClockedHours: 37,
 		},
 	}
 	totalSum := CalculateTotalSum(employees)
-
 	fmt.Println(totalSum)
 }
 
-func CalculateTotalSum(employees []Employee) (total int) {
+func CalculateTotalSum(employees []salary.Employee) (total int) {
 	sum := 0
 	for _, v := range employees {
-		sum = sum + (v.hourlyPay * v.clockedHours)
+		sum = sum + v.CalculatePay()
 	}
 	return sum
 }

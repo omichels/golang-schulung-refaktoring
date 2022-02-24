@@ -27,3 +27,19 @@ Wie sieht's denn besser aus?
 Hollywood-Principle: Rufen Sie uns nicht an, wir rufen Sie an!
 
 Wir sagen der Entität also, dass es eine Berechnung durchführen soll
+
+
+
+Stufe 2:
+Es gibt die Typen Employee und ChinaEmployee
+ChinaEmployee erhält den Bonus erst, wenn mehr als 100 Arbeitsstunden gebucht wurden.
+
+Die Variablität ist aber nun gekapselt, Änderungen an den Arbeitsverträgen schlagen nicht
+mehr bis "ganz oben" in die Berechnung von CalculateTotalSum durch.
+Hier gibt's niemals
+ if 
+  else
+   if 
+    else
+     if 
+      else

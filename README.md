@@ -16,7 +16,7 @@ dafür dass er mehr als 38h im letzten Monat gearbeitet hat ?
    sum = sum + (v.hourlyPay * v.clockedHours)
  }
 
- super hässlich, was ist wenn das Attribut nicht korrekt initialisiert ist mit 0,
+ super hässlich, was ist, wenn das Attribut nicht korrekt initialisiert ist mit 0,
  was, wenn in anderen Niederlassungen 40h schon Standard ist, 
  was, wenn die 38h als Regel geändert werden, 
  was, wenn ...
@@ -25,3 +25,5 @@ dafür dass er mehr als 38h im letzten Monat gearbeitet hat ?
 Wie sieht's denn besser aus?
 
 Hollywood-Principle: Rufen Sie uns nicht an, wir rufen Sie an!
+
+Wir sagen der Entität also, dass es eine Berechnung durchführen soll

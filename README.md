@@ -43,3 +43,24 @@ Hier gibt's niemals
     else
      if 
       else
+
+
+## Code Smell DRY 
+Do not repeat yourself
+
+Type Embedding to the rescue
+
+before                                  after
+
+type ChinaEmployee struct {             type ChinaEmployee struct {
+  Id           int                        Emp Employee
+  HourlyPay    int                      }
+  ClockedHours int
+  Bonus        int
+}
+
+
+
+
+
+

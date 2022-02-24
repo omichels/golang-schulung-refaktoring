@@ -12,11 +12,14 @@ func main() {
 		ClockedHours: 40,
 		Bonus:        0,
 	}
-	c1 := salary.ChinaEmployee{
+	ec1 := salary.Employee{
 		Id:           2,
 		HourlyPay:    1,
-		ClockedHours: 37,
+		ClockedHours: 38,
 		Bonus:        100,
+	}
+	c1 := salary.ChinaEmployee{
+		Emp: ec1,
 	}
 	employees := make([]salary.PayCalculator, 0)
 	employees = append(employees, e1)

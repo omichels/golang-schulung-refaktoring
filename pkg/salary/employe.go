@@ -20,16 +20,13 @@ func (e Employee) CalculatePay() (sum int) {
 }
 
 type ChinaEmployee struct {
-	Id           int
-	HourlyPay    int
-	ClockedHours int
-	Bonus        int
+	Emp Employee
 }
 
 func (e ChinaEmployee) CalculatePay() (sum int) {
-	if e.ClockedHours > 100 {
-		return (e.HourlyPay * e.ClockedHours) + e.Bonus
+	if e.Emp.ClockedHours > 100 {
+		return (e.Emp.HourlyPay * e.Emp.ClockedHours) + e.Emp.Bonus
 	} else {
-		return e.HourlyPay * e.ClockedHours
+		return e.Emp.HourlyPay * e.Emp.ClockedHours
 	}
 }

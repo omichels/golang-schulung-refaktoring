@@ -7,22 +7,23 @@ import (
 
 func TestEmployee_CalculatePay_IncludesBonusWhenWorkingOvertime(t *testing.T) {
 	// given
-	e := Employee{
-		Id:           1,
-		HourlyPay:    1,
-		ClockedHours: 40,
-		Bonus:        10,
-	}
+	e := NewEmployee("europe", 1) // hourlyPay is 20$
+	e.SetClockedHours(40)
 	// when
 	sum := e.CalculatePay()
 	//verify
-	assert.Equal(t, 50, sum, "40 hours is overtime, 40 * 1 + 10 makes 50$")
+	assert.Equal(t, 850, sum, "40 hours is overtime, 40 * 20 + 50 makes 850$")
 
 	// given
-	c := ChinaEmployee{}
-	c.Emp = e
+	c := NewEmployee("china", 2) // hourlyPay is 10$
+	c.SetClockedHours(40)
 	// when
 	sum = c.CalculatePay()
 	//verify
-	assert.Equal(t, 40, sum, "40 hours is no overtime in china")
+	assert.Equal(t, 400, sum, "40 hours is no overtime in china")
+}
+
+func Test_EmployeeFactory(t *testing.T) {
+	NewEmployee("europe", 1)
+	NewEmployee("china", 2)
 }

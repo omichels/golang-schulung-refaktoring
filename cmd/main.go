@@ -6,21 +6,10 @@ import (
 )
 
 func main() {
-	e1 := salary.Employee{
-		Id:           1,
-		HourlyPay:    1,
-		ClockedHours: 40,
-		Bonus:        0,
-	}
-	ec1 := salary.Employee{
-		Id:           2,
-		HourlyPay:    1,
-		ClockedHours: 38,
-		Bonus:        100,
-	}
-	c1 := salary.ChinaEmployee{
-		Emp: ec1,
-	}
+	e1 := salary.NewEmployee("europe", 1)
+	e1.SetClockedHours(40)
+	c1 := salary.NewEmployee("china", 2)
+	c1.SetClockedHours(20)
 	employees := make([]salary.PayCalculator, 0)
 	employees = append(employees, e1)
 	employees = append(employees, c1)

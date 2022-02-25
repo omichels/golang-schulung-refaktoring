@@ -1,5 +1,9 @@
 package salary
 
+import (
+	internal "github.com/omichels/golang-schulung-refaktoring/internal"
+)
+
 type PayCalculator interface {
 	CalculatePay() (sum int)
 }
@@ -12,7 +16,7 @@ type Employee struct {
 }
 
 func (e Employee) CalculatePay() (sum int) {
-	if e.ClockedHours > 38 {
+	if e.ClockedHours > internal.OvertimeHourReachedForBonus {
 		return (e.HourlyPay * e.ClockedHours) + e.Bonus
 	} else {
 		return e.HourlyPay * e.ClockedHours

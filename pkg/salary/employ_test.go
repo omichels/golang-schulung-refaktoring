@@ -26,4 +26,5 @@ func TestEmployee_CalculatePay_IncludesBonusWhenWorkingOvertime(t *testing.T) {
 func Test_EmployeeFactory(t *testing.T) {
 	NewEmployee("europe", 1)
 	NewEmployee("china", 2)
+	NewEmployee("americas", 3)
 }

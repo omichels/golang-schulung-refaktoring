@@ -2,6 +2,8 @@ package salary
 
 import (
 	internal "github.com/omichels/golang-schulung-refaktoring/internal"
+	"github.com/sirupsen/logrus"
+	"reflect"
 )
 
 type PayCalculator interface {
@@ -73,6 +75,21 @@ func NewEmployee(location string, id int) PayCalculator {
 		"europe": InitializeEuropeType,
 		"china":  InitializeChinaType,
 	}
+	keys := reflect.ValueOf(classes).MapKeys()
+	validateInputsNewEmployeeFactory(&location, keys)
 	newEmp := classes[location](id)
 	return newEmp
+}
+
+func validateInputsNewEmployeeFactory(location *string, keys []reflect.Value) {
+	found := false
+	for _, v := range keys {
+		if v.String() == *location {
+			found = true
+		}
+	}
+	if !found {
+		logrus.Debug("fallback to default europe")
+		*location = "europe"
+	}
 }

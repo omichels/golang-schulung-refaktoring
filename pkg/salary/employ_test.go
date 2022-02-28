@@ -26,5 +26,7 @@ func TestEmployee_CalculatePay_IncludesBonusWhenWorkingOvertime(t *testing.T) {
 func Test_EmployeeFactory(t *testing.T) {
 	NewEmployee("europe", 1)
 	NewEmployee("china", 2)
-	NewEmployee("americas", 3)
+	e3 := NewEmployee("not-china-not-europe", 3)
+	// verify
+	assert.Equal(t, "europe", e3.GetLocation(), "fallback to europe as default")
 }

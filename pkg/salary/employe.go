@@ -9,6 +9,7 @@ import (
 type PayCalculator interface {
 	CalculatePay() (sum int)
 	SetClockedHours(int)
+	GetLocation() string
 }
 
 type Employee struct {
@@ -34,6 +35,10 @@ func (e *Employee) SetClockedHours(i int) {
 	e.clockedHours = i
 }
 
+func (e *Employee) GetLocation() string {
+	return "europe"
+}
+
 type ChinaEmployee struct {
 	emp Employee
 }
@@ -48,7 +53,11 @@ func (e *ChinaEmployee) CalculatePay() (sum int) {
 func (e *ChinaEmployee) SetClockedHours(i int) {
 	e.emp.clockedHours = i
 }
+func (e *ChinaEmployee) GetLocation() string {
+	return "china"
+}
 
+// InitializeEuropeType
 // EuropeType factory
 func InitializeEuropeType(id int) PayCalculator {
 	return &Employee{
@@ -58,6 +67,7 @@ func InitializeEuropeType(id int) PayCalculator {
 	}
 }
 
+// InitializeChinaType
 // ChinaType factory
 func InitializeChinaType(id int) PayCalculator {
 	return &ChinaEmployee{

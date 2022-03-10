@@ -2,6 +2,7 @@ package salary
 
 import (
 	internal "github.com/omichels/golang-schulung-refaktoring/internal"
+	"github.com/omichels/golang-schulung-refaktoring/pkg/numbergen"
 	"github.com/sirupsen/logrus"
 	"reflect"
 )
@@ -10,6 +11,7 @@ type PayCalculator interface {
 	CalculatePay() (sum int)
 	SetClockedHours(int)
 	GetLocation() string
+	GetId() int
 }
 
 type Employee struct {
@@ -56,6 +58,9 @@ func (e *ChinaEmployee) SetClockedHours(i int) {
 func (e *ChinaEmployee) GetLocation() string {
 	return "china"
 }
+func (e *ChinaEmployee) GetId() int {
+	return e.emp.GetId()
+}
 
 // InitializeEuropeType
 // EuropeType factory
@@ -79,7 +84,7 @@ func InitializeChinaType(id int) PayCalculator {
 	}
 }
 
-func NewEmployee(location string, id int) PayCalculator {
+func NewEmployee(location string) PayCalculator {
 	// Map of strings to factories
 	classes := map[string]func(int) PayCalculator{
 		"europe": InitializeEuropeType,
@@ -87,7 +92,7 @@ func NewEmployee(location string, id int) PayCalculator {
 	}
 	keys := reflect.ValueOf(classes).MapKeys()
 	validateInputsNewEmployeeFactory(&location, keys)
-	newEmp := classes[location](id)
+	newEmp := classes[location](numbergen.GeneratorInstance().GetNumber())
 	return newEmp
 }
 
